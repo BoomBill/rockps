@@ -1,16 +1,15 @@
 let win = 0;
 let loose = 0;
 
+game()
+
 function computerPlay() {
     let randomNumber = Math.floor(Math.random() * 100);
     if (randomNumber >= 0 && randomNumber <= 32) {
-        console.log("ROCK");
         return("ROCK");
     } else if (randomNumber >= 33 && randomNumber <= 66) {
-        console.log("PAPER");
         return("PAPER");
     } else if (randomNumber >= 67 && randomNumber <= 100) {
-        console.log("SCISSORS");
         return("SCISSORS");
     }
 }
@@ -19,11 +18,9 @@ function playerSelection() {
     let userInput = prompt("Choose your weapon");
     let userInputUpperCase = userInput.toUpperCase();
     if (userInputUpperCase == "ROCK" || userInputUpperCase == "PAPER" || userInputUpperCase == "SCISSORS" ) {
-        console.log(userInputUpperCase)
         return userInputUpperCase;
     } else {
-        alert("Error not a weapon");
-        return;
+        alert("Not a weapon")
     }
 }
 
@@ -31,26 +28,44 @@ function singleRound() {
     let playerChoice = playerSelection();
     let computerChoice = computerPlay();
     if (playerChoice === computerChoice) {
-        console.log("Tie game!")
+        console.log("Tie game!");
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } if (playerChoice === "ROCK" && computerChoice === "SCISSORS") {
-        console.log("You won!")
+        console.log("You won!");
         win++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } else if (playerChoice === "PAPER" && computerChoice === "ROCK") {
-        console.log("You won!")
+        console.log("You won!");
         win++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } else if (playerChoice === "SCISSORS" && computerChoice === "PAPER") {
-        console.log("You won!")
+        console.log("You won!");
         win++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } else if (playerChoice === "SCISSORS" && computerChoice === "ROCK") {
-        console.log("You loose!")
+        console.log("You lost!");
         loose++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } else if (playerChoice === "ROCK" && computerChoice === "PAPER") {
-        console.log("You loose!")
+        console.log("You lost!");
         loose++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
     } else if (playerChoice === "PAPER" && computerChoice === "SCISSORS") {
-        console.log("You loose!")
+        console.log("You lost!");
         loose++;
-    } 
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
+    } else {
+        loose++;
+        console.log("Player score: " + win);
+        console.log("Computer score: " + loose);
+    }
 }
 
 function game() {
@@ -62,10 +77,11 @@ function game() {
     console.log("Win: " + win);
     console.log("Loose: " + loose);
     if (win > loose) {
-        console.log("You won the game :)")
+        alert("You won the game :)")
     } else if (loose > win) {
-        console.log("You loost the game :(")
+        alert("You lost the game :(")
     } else {
-        console.log("Tie game :|")
+        alert("Tie game :|")
     }
+    return;
 }
